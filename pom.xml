@@ -130,11 +130,7 @@
             <artifactId>jstl-api</artifactId>
             <version>${javax.jsp.jspl}</version>
         </dependency>
-        <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>${taglibs}</version>
-        </dependency>
+
         <!--MyBatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
