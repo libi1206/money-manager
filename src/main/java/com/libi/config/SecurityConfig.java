@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                //下面是详细的安全性调整，TODO 还没有完成,注意提取魔法值
-                .anyRequest().anonymous()
+                //下面是详细的安全性调整，TODO 还没有完成
+                .anyRequest().permitAll()
                 //设置登陆请求的URL
                 .and().formLogin().loginPage(LOGIN_URL)
                 .loginProcessingUrl(LOGIN_URL)

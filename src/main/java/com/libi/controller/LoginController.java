@@ -28,12 +28,13 @@ public class LoginController {
         return response;
     }
 
-    @RequestMapping(method = RequestMethod.GET,value = "/test")
+    @RequestMapping(method = RequestMethod.GET,value = "/me")
     @ResponseBody
-    public ResponseTemplate<String> test() {
-        ResponseTemplate<String> response = new ResponseTemplate<String>();
+    public ResponseTemplate<UserDetails> test() {
+        ResponseTemplate<UserDetails> response = new ResponseTemplate<UserDetails>();
         response.setCode(0);
-        response.setData("123");
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        response.setData(userDetails);
         return response;
     }
 

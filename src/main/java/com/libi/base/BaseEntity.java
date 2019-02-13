@@ -6,7 +6,7 @@ package com.libi.base;
  */
 public class BaseEntity {
     private Long id;
-    private Long creatTime;
+    private Long createTime;
 
     public Long getId() {
         return id;
@@ -17,10 +17,10 @@ public class BaseEntity {
     }
 
     public Long getCreatTime() {
-        return creatTime;
+        return createTime;
     }
 
     public void setCreatTime(Long creatTime) {
-        this.creatTime = creatTime;
+        this.createTime = creatTime;
     }
 }
