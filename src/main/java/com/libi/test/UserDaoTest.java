@@ -46,4 +46,10 @@ public class UserDaoTest {
         userMapper.insert(user);
         System.out.println("插入成功，id:"+user.getId());
     }
+
+    @Test
+    public void testSelectByUsername() {
+        SysUser user = userMapper.selectByUsername("libi1206");
+        System.out.println(user.getId());
+    }
 }

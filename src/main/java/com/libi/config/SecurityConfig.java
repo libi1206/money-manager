@@ -1,5 +1,7 @@
 package com.libi.config;
 
+import com.libi.service.impl.UserDetailServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,16 +18,16 @@ import static com.libi.constant.SecurityConst.*;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    UserDetailServiceImpl userDetailService;
+
     @Override
     /**
      * 配置整个用户信息从哪里获得
      */
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //TODO 这里使用了内存记录用户的操作，记得修改为数据库操作
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("123456").roles(ROLE_ADMIN, ROLE_USER).and()
-                .withUser("user").password("123456").roles(ROLE_USER).and()
-
+        auth.userDetailsService(userDetailService)
                 //密码加密 TODO 没有加密
                 .passwordEncoder(new PasswordEncoder() {
                     public String encode(CharSequence charSequence) {

@@ -32,5 +32,9 @@
       select * from sys_user
     </select>
 
+    <select id="selectByUsername" resultType="com.libi.entity.SysUser">
+        select * from sys_user where user_name = #{userName};
+    </select>
+
 
 </mapper>

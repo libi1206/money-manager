@@ -25,7 +25,13 @@ public class SecurityConst {
     /**
      * 角色控制的字符串
      */
-    public static final String ROLE_ADMIN = "ADMIN";
-    public static final String ROLE_USER = "USER";
+    public static final String ROLE_ADMIN = "AUTH_ADMIN";
+    public static final String ROLE_USER = "AUTH_USER";
+
+    /**
+     * 数据库中的角色控制字符串
+     */
+    public static final String ADMIN = "ADMIN";
+    public static final String USER = "USER";
 
 }
