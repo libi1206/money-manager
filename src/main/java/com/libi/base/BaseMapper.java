@@ -32,7 +32,7 @@ public interface BaseMapper<T extends BaseEntity> {
      * @param id
      * @return
      */
-    int selece(Long id);
+    T select(Long id);
 
     /**
      * 拉取全部记录

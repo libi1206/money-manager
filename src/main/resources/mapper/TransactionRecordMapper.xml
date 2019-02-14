@@ -3,24 +3,33 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.libi.dao.TransactionRecordMapper">
-    <insert id="insert" >
-
+    <insert id="insert" parameterType="com.libi.entity.TransactionRecord">
+      <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+          SELECT LAST_INSERT_ID()
+      </selectKey>
+      insert into transaction_record
+      (id,spend,save,operation_user,accept_user,amount,record_type,note,create_time)
+      values
+      (#{id},#{spend},#{save},#{operationUser},#{acceptUser},#{amount},#{recordType},#{note},#{createTime})
     </insert>
 
     <delete id="delete">
-
+      delete from transaction_record where id = #{id}
     </delete>
 
     <update id="update">
-
+      update transaction_record set
+      spend=#{spend},save=#{save},operation_user=#{operationUser},accept_user=#{acceptUser},
+      amount=#{amount},record_type=#{recordType},note=#{note},create_time=#{createTime}
+      where id=#{id}
     </update>
 
-    <select id="selete" resultType="com.libi.entity.TransactionRecord">
-
+    <select id="select" resultType="com.libi.entity.TransactionRecord">
+      select * from transaction_record where id = #{id}
     </select>
 
-    <select id="seleteAll" resultType="com.libi.entity.TransactionRecord">
-
+    <select id="selectAll" resultType="com.libi.entity.TransactionRecord">
+      select * from transaction_record;
     </select>
 
 
