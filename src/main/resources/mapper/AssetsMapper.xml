@@ -7,8 +7,8 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into assets (owner,assets_name,money,note,create_time) 
-        values (#{owner}.#{assetsName},#{money},#{note},#{createTime});
+        insert into assets (owner,assets_name,money,note,one_way,create_time)
+        values (#{owner},#{assetsName},#{money},#{note},#{oneWay},#{createTime})
 
     </insert>
 
@@ -18,7 +18,8 @@
 
     <update id="update">
       update assets set owner = #{owner},assets_name = #{assetsName},
-                         money = #{money},note = #{note},create_time = #{#createTime}
+                         money = #{money},note = #{note},one_way=#{oneWay}
+                         create_time = #{#createTime}
       where id = #{id}
     </update>
 

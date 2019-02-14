@@ -2,8 +2,10 @@ package com.libi.test;
 
 import com.libi.config.RootConfig;
 import com.libi.config.WebConfig;
+import com.libi.dao.AssetsMapper;
 import com.libi.dao.FamilyMapper;
 import com.libi.dao.UserMapper;
+import com.libi.entity.Assets;
 import com.libi.entity.Family;
 import com.libi.entity.User;
 import org.junit.Test;
@@ -24,18 +26,22 @@ public class UserDaoTest {
     @Autowired
     private UserMapper userMapper;
     @Autowired
-    private FamilyMapper familyMapper;
+    private AssetsMapper assetsMapper;
 
     @Test
     public void testDao() {
         User user = userMapper.select(1L);
         System.out.println(user.getUserName());
 
-        Family family = new Family();
-        family.setFamilyName("123");
-        family.setCreatTime(System.currentTimeMillis());
-        familyMapper.insert(family);
-        System.out.println("插入完成");
+        Assets assets = new Assets();
+        assets.setAssetsName("支付宝");
+        assets.setMoney(100.0);
+        assets.setOnwer(1L);
+        assets.setOneWay(false);
+        assets.setCreatTime(System.currentTimeMillis());
+        assetsMapper.insert(assets);
+
+        System.out.println("插入完成,id="+assets.getId());
 
     }
 }

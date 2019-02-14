@@ -11,6 +11,23 @@ public class Assets extends BaseEntity {
     private String assetsName;
     private Double money;
     private String note;
+    private Boolean oneWay;
+
+    public Long getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Long owner) {
+        this.owner = owner;
+    }
+
+    public Boolean getOneWay() {
+        return oneWay;
+    }
+
+    public void setOneWay(Boolean oneWay) {
+        this.oneWay = oneWay;
+    }
 
     public Long getOnwer() {
         return owner;
