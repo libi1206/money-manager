@@ -15,7 +15,7 @@ import static com.libi.constant.SecurityConst.*;
  * 用于用户登陆的控制器，用户登陆调用的接口
  */
 @Controller
-@RequestMapping(LOGIN_URL)
+@RequestMapping("/login")
 public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST,value = "/success")
