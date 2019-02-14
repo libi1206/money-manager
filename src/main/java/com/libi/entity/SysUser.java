@@ -6,7 +6,7 @@ import com.libi.base.BaseEntity;
  * @author libi
  * 用户
  */
-public class User extends BaseEntity {
+public class SysUser extends BaseEntity {
     private String userName;
     private String password;
     private boolean sex;
