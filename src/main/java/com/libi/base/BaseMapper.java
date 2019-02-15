@@ -1,5 +1,6 @@
 package com.libi.base;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 /**

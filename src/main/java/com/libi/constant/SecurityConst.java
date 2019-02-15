@@ -7,14 +7,17 @@ package com.libi.constant;
 public class SecurityConst {
 
     /**
-     * 登录登出的URL
+     * URL常量
      */
-    public static final String LOGIN_URL = "/login";
-    public static final String LOGIN_SUCCESS_URL = "/login/success";
-    public static final String LOGIN_FAIL_URL = "/login/fail";
-    public static final String LOGOUT_URL = "/logout";
-    public static final String LOGOUT_SUCCESS_URL = "/logout/success";
-    public static final String LOGOUT_FAIL_URL = "/logout/fail";
+    public static final String LOGIN_URL = "/user/login";
+    public static final String LOGIN_SUCCESS_URL = "/user/login/success";
+    public static final String LOGIN_FAIL_URL = "/user/login/fail";
+    public static final String LOGOUT_URL = "/user/logout";
+    public static final String LOGOUT_SUCCESS_URL = "/user/logout/success";
+    public static final String LOGOUT_FAIL_URL = "/user/logout/fail";
+    public static final String REGISTER_URL = "/user/register";
+    public static final String REGISTER_SUCCESS_URL = "/user/register/success";
+    public static final String REGISTER_FAIL_URL = "/user/register/fail";
 
     /**
      * 用户名和密码的参数名

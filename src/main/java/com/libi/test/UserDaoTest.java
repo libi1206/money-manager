@@ -15,6 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 /**
  * @author libi
  * 用于调试dao层
@@ -33,7 +35,7 @@ public class UserDaoTest {
      * SQL语句写错了报错 java.sql.SQLSyntaxErrorException
      */
     @Test
-    public void testDao() {
+    public void testDao() throws SQLIntegrityConstraintViolationException {
         SysUser user = new SysUser();
         user.setUserName("libi99812206");
         user.setPassword("123456");

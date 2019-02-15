@@ -2,11 +2,13 @@ package com.libi.config;
 
 import com.libi.service.impl.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.SQLOutput;
@@ -21,6 +23,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailServiceImpl userDetailService;
 
+    /**
+     * 密码编码
+     * @return
+     */
+    @Bean("passwordEncoder")
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     /**
      * 配置整个用户信息从哪里获得
@@ -28,19 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //TODO 这里使用了内存记录用户的操作，记得修改为数据库操作
         auth.userDetailsService(userDetailService)
-                //密码加密 TODO 没有加密
-                .passwordEncoder(new PasswordEncoder() {
-                    public String encode(CharSequence charSequence) {
-                        System.out.println("编码:"+charSequence.toString());
-                        return charSequence.toString();
-                    }
-
-                    public boolean matches(CharSequence charSequence, String s) {
-                        System.out.println("s:"+s);
-                        System.out.println("c:"+charSequence.toString());
-                        return s.equals(charSequence.toString());
-                    }
-                });
+                //密码加密
+                .passwordEncoder(passwordEncoder());
     }
 
     @Override

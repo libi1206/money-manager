@@ -24,6 +24,7 @@ import static com.libi.constant.SecurityConst.*;
 public class UserDetailServiceImpl implements UserDetailsService {
     @Autowired
     SysUserMapper sysUserMapper;
+    @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         SysUser sysUser = sysUserMapper.selectByUsername(userName);
         User userDetails = new User(sysUser.getUserName(),sysUser.getPassword(),handleAuthority(sysUser.getAuthority()));
