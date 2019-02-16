@@ -51,6 +51,14 @@ public class ExceptionController{
         return response;
     }
 
+    @RequestMapping("/405")
+    @ResponseBody
+    public ResponseTemplate<String> handle405() {
+        ResponseTemplate<String> responseTemplate = new ResponseTemplate<String>();
+        responseTemplate.setCode(10001);
+        responseTemplate.setData("该请求方法不允许");
+        return responseTemplate;
+    }
     @RequestMapping("/500")
     @ResponseBody
     public ResponseTemplate<String> handle500() {

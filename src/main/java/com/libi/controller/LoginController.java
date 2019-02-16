@@ -25,7 +25,7 @@ public class LoginController {
     private UserService userService;
 
 
-    @RequestMapping(method = RequestMethod.POST, value = "/success")
+    @RequestMapping(value = "/success")
     @ResponseBody
     public ResponseTemplate<SysUser> loginSuccess() {
         ResponseTemplate<SysUser> response = new ResponseTemplate<SysUser>();
@@ -46,7 +46,7 @@ public class LoginController {
         return response;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/me")
+    @RequestMapping(value = "/me")
     public String  getUserInfo() {
         return "redirect:"+LOGIN_SUCCESS_URL;
     }

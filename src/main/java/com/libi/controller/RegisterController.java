@@ -35,7 +35,7 @@ public class RegisterController {
             response.setData("注册成功");
         } else {
             response.setCode(10007);
-            response.setData("注册失败，可能是用户名重复了");
+            response.setData("注册失败，可能是用户名或手机号重复");
         }
         return response;
     }
