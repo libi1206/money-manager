@@ -38,7 +38,7 @@ public class ExceptionController{
     public ResponseTemplate<String> handle403() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(10002);
-        response.setData("请求被拒绝");
+        response.setData("请求被拒绝,可能是权限不够");
         return response;
     }
 
