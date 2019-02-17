@@ -22,5 +22,12 @@ public interface UserService {
      */
     SysUser userLogin(String userName);
 
+    /**
+     * 根据电话号码选择用户
+     * @param phone
+     * @return
+     */
+    SysUser selectByPhoneNumber(String phone);
+
 
 }

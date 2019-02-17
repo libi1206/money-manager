@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.libi.constant.SecurityConst.*;
 
 /**
@@ -49,6 +51,20 @@ public class LoginController {
     @RequestMapping(value = "/me")
     public String  getUserInfo() {
         return "redirect:"+LOGIN_SUCCESS_URL;
+    }
+
+    /**
+     * TODO 请求转发给LoginURL无法正常判断
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/phone",method = RequestMethod.POST)
+    public String loginForPhone(HttpServletRequest request) {
+        String phoneNumber = request.getParameter("phone");
+        System.out.println(phoneNumber);
+        SysUser user = userService.selectByPhoneNumber(phoneNumber);
+        request.setAttribute("username",user.getUserName());
+        return "forward:"+LOGIN_URL;
     }
 
 

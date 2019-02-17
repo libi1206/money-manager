@@ -22,20 +22,28 @@ import static com.libi.constant.SecurityConst.*;
  */
 @Service("UserDetailService")
 public class UserDetailServiceImpl implements UserDetailsService {
+    private static final String PHONE_PREFIX = "tel_";
     @Autowired
     SysUserMapper sysUserMapper;
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        SysUser sysUser = sysUserMapper.selectByUsername(userName);
-        User userDetails = new User(sysUser.getUserName(),sysUser.getPassword(),handleAuthority(sysUser.getAuthority()));
+        SysUser sysUser = null;
+        if (userName.startsWith(PHONE_PREFIX)) {
+            sysUser = sysUserMapper.selectByPhone(userName.substring(4));
+        } else {
+            sysUser = sysUserMapper.selectByUsername(userName);
+        }
+        User userDetails = new User(sysUser.getUserName(), sysUser.getPassword(), handleAuthority(sysUser.getAuthority()));
         return userDetails;
     }
 
     /**
      * 负责处理数据库中的角色权限信息，把他变成SimpleGrantedAuthority类的集合
      * 现在它的逻辑是：
-     *      USER ==> ROLE_USER
-     *      ADMIN ==> ROLE_USER,ADMIN
+     * USER ==> ROLE_USER
+     * ADMIN ==> ROLE_USER,ADMIN
+     *
      * @param auth 数据库中的权限字符串
      * @return 需要的权限类的集合
      */
@@ -45,7 +53,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         SimpleGrantedAuthority authAdmin = new SimpleGrantedAuthority(ROLE_ADMIN);
         if (USER.equals(auth)) {
             authList.add(authUser);
-        }else if(ADMIN.equals(auth)){
+        } else if (ADMIN.equals(auth)) {
             authList.add(authAdmin);
             authList.add(authUser);
         }

@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest().permitAll()
                 //设置登陆请求的URL
-                .and().formLogin().loginPage(LOGIN_URL)
+                .and().formLogin()
                 .loginProcessingUrl(LOGIN_URL)
                 .successForwardUrl(LOGIN_SUCCESS_URL)
                 .failureForwardUrl(LOGIN_FAIL_URL)

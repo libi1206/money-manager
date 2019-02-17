@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService {
     public SysUser userLogin(String userName) {
         return sysUserMapper.selectByUsername(userName);
     }
+
+    @Override
+    public SysUser selectByPhoneNumber(String phone) {
+        return sysUserMapper.selectByPhone(phone);
+    }
 }
