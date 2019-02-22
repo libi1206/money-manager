@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 16/02/2019 15:43:30
+ Date: 22/02/2019 21:12:19
 */
 
 SET NAMES utf8mb4;
@@ -34,7 +34,7 @@ CREATE TABLE `assets`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK_have`(`owner`) USING BTREE,
   CONSTRAINT `FK_have` FOREIGN KEY (`owner`) REFERENCES `sys_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for family
@@ -45,7 +45,7 @@ CREATE TABLE `family`  (
   `family_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `create_time` bigint(20) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for family_mapping
@@ -54,6 +54,7 @@ DROP TABLE IF EXISTS `family_mapping`;
 CREATE TABLE `family_mapping`  (
   `user_id` bigint(20) NOT NULL,
   `family_id` bigint(20) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`user_id`, `family_id`) USING BTREE,
   INDEX `FK_mack2`(`family_id`) USING BTREE,
   CONSTRAINT `FK_mack` FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
@@ -77,7 +78,7 @@ CREATE TABLE `sys_user`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `user_name`(`user_name`) USING BTREE,
   UNIQUE INDEX `phone`(`phone`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for transaction_record
