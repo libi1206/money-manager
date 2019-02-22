@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import static com.libi.constant.SecurityConst.*;
+import static com.libi.constant.ErrorCodeConst.*;
 
 /**
  * @author libi
@@ -24,9 +25,9 @@ public class LogoutController {
 
     @RequestMapping(value = "/fail")
     @ResponseBody
-    public ResponseTemplate logoutfail() {
+    public ResponseTemplate logoutFail() {
         ResponseTemplate<String> responseTemplate = new ResponseTemplate<String>();
-        responseTemplate.setCode(10008);
+        responseTemplate.setCode(UNKNOWN_ERROR);
         responseTemplate.setData("登出失败");
         return responseTemplate;
     }

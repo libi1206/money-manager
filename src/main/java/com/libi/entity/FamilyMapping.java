@@ -8,7 +8,8 @@ import com.libi.base.BaseEntity;
  */
 public class FamilyMapping extends BaseEntity {
     private Long userId;
-    private Long FamilyId;
+    private Long familyId;
+    private Boolean isAdmin;
 
     public Long getUserId() {
         return userId;
@@ -19,10 +20,18 @@ public class FamilyMapping extends BaseEntity {
     }
 
     public Long getFamilyId() {
-        return FamilyId;
+        return familyId;
     }
 
     public void setFamilyId(Long familyId) {
-        FamilyId = familyId;
+        this.familyId = familyId;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 }

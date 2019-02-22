@@ -77,16 +77,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().exceptionHandling().accessDeniedPage("/error/403")
                 //设置未登录的操作
                 .and().exceptionHandling().authenticationEntryPoint(new AuthenticationEntryPoint() {
-            @Override
-            public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-                httpServletResponse.setContentType("application/json;charset=utf-8");
-                PrintWriter out = httpServletResponse.getWriter();
-                String sb = "{\"code\":10002,\"data\":\"未登录\"}";
-                out.write(sb);
-                out.flush();
-                out.close();
-            }
-        })
+                    @Override
+                    public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+                        httpServletResponse.setContentType("application/json;charset=utf-8");
+                        PrintWriter out = httpServletResponse.getWriter();
+                        String sb = "{\"code\":10002,\"data\":\"未登录\"}";
+                        out.write(sb);
+                        out.flush();
+                        out.close();
+                    }
+                })
                 //TODO 暂时关闭csrf
                 .and().csrf().disable();
     }

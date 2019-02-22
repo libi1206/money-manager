@@ -5,7 +5,7 @@
 <mapper namespace="com.libi.dao.FamilyMappingMapper">
     <insert id="insert" parameterType="com.libi.entity.FamilyMapping">
       insert into family_mapping
-        (user_id,family_id) values (#{userId},#{familyId})
+        (user_id,family_id,is_admin) values (#{userId},#{familyId},#{isAdmin})
     </insert>
 
     <delete id="delete">

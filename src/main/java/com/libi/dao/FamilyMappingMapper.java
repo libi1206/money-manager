@@ -18,6 +18,7 @@ public interface FamilyMappingMapper extends BaseMapper<FamilyMapping> {
      */
     int delete(@Param("userId") Long userId, @Param("familyId") Long familyId);
 
+    @Override
     @Deprecated
     /**
      * 没有真正意义上的主键，所以没法用

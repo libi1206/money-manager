@@ -24,7 +24,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {RootConfig.class,WebConfig.class})
-public class UserDaoTest {
+public class DaoTest {
     @Autowired
     private SysUserMapper userMapper;
     @Autowired
@@ -37,14 +37,14 @@ public class UserDaoTest {
     @Test
     public void testDao() throws SQLIntegrityConstraintViolationException {
         SysUser user = new SysUser();
-        user.setUserName("libi99812206");
+        user.setUserName("843298330@qq.com");
         user.setPassword("123456");
         user.setSex(true);
         user.setAuthority("USER");
-        user.setNeckName("libi2");
+        user.setNeckName("libi3");
         user.setHeadImg("....");
-        user.setPhone("13333333333");
-        user.setCreatTime(System.currentTimeMillis());
+        user.setPhone("13333333334");
+        user.setCreateTime(System.currentTimeMillis());
         userMapper.insert(user);
         System.out.println("插入成功，id:"+user.getId());
     }
@@ -54,4 +54,5 @@ public class UserDaoTest {
         SysUser user = userMapper.selectByUsername("libi1206");
         System.out.println(user.getId());
     }
+
 }

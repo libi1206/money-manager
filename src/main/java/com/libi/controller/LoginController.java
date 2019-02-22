@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 import static com.libi.constant.SecurityConst.*;
+import static com.libi.constant.ErrorCodeConst.*;
 
 /**
  * @author libi
@@ -43,7 +44,7 @@ public class LoginController {
     @ResponseBody
     public ResponseTemplate<String> loginFail() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
-        response.setCode(10006);
+        response.setCode(LOGIN_FAIL_ERROR);
         response.setData("登录的账号或密码有误");
         return response;
     }

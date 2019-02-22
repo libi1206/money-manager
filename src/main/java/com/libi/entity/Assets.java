@@ -21,22 +21,6 @@ public class Assets extends BaseEntity {
         this.owner = owner;
     }
 
-    public Boolean getOneWay() {
-        return oneWay;
-    }
-
-    public void setOneWay(Boolean oneWay) {
-        this.oneWay = oneWay;
-    }
-
-    public Long getOnwer() {
-        return owner;
-    }
-
-    public void setOnwer(Long onwer) {
-        this.owner = onwer;
-    }
-
     public String getAssetsName() {
         return assetsName;
     }
@@ -59,5 +43,13 @@ public class Assets extends BaseEntity {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Boolean getOneWay() {
+        return oneWay;
+    }
+
+    public void setOneWay(Boolean oneWay) {
+        this.oneWay = oneWay;
     }
 }

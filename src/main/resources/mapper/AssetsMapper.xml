@@ -18,17 +18,21 @@
 
     <update id="update">
       update assets set owner = #{owner},assets_name = #{assetsName},
-                         money = #{money},note = #{note},one_way=#{oneWay}
-                         create_time = #{#createTime}
+                         money = #{money},note = #{note},one_way=#{oneWay},
+                         create_time = #{createTime}
       where id = #{id}
     </update>
 
     <select id="select" resultType="com.libi.entity.Assets">
-      select * from assets where id = #{id};
+      select * from assets where id = #{id}
     </select>
 
     <select id="selectAll" resultType="com.libi.entity.Assets">
-      select * from assets;
+      select * from assets
+    </select>
+
+    <select id="selectUserAssets" resultType="com.libi.entity.Assets">
+        select * from assets where owner = #{owner}
     </select>
 
 </mapper>
