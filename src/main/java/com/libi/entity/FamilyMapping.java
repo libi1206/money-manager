@@ -27,11 +27,11 @@ public class FamilyMapping extends BaseEntity {
         this.familyId = familyId;
     }
 
-    public Boolean getAdmin() {
+    public Boolean getIsAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(Boolean admin) {
+    public void setIsAdmin(Boolean admin) {
         isAdmin = admin;
     }
 }
