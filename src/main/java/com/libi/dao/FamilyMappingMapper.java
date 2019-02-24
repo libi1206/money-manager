@@ -1,9 +1,13 @@
 package com.libi.dao;
 
 import com.libi.base.BaseMapper;
+import com.libi.entity.Family;
 import com.libi.entity.FamilyMapping;
+import com.libi.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author libi
@@ -30,4 +34,18 @@ public interface FamilyMappingMapper extends BaseMapper<FamilyMapping> {
      * 没有真正意义上的主键，所以没法用
      */
     FamilyMapping selece(Long id);
+
+    /**
+     * 查询一个家庭里所有的用户
+     * @param familyId
+     * @return
+     */
+    List<SysUser> selectAllUserInFamily(Long familyId);
+
+    /**
+     * 查询用户加入的所有的家庭
+     * @param userId
+     * @return
+     */
+    List<Family> selectAllFamilyInUser(Long userId);
 }

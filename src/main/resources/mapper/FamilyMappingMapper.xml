@@ -9,7 +9,7 @@
     </insert>
 
     <delete id="delete">
-      delete from famimy_mapping where user_id = #{userId} and family_id = #{familyId}
+      delete from family_mapping where user_id = #{userId} and family_id = #{familyId}
     </delete>
 
     <update id="update">
@@ -22,6 +22,19 @@
 
     <select id="selectAll" resultType="com.libi.entity.FamilyMapping">
       select * from family_mapping
+    </select>
+
+
+    <select id="selectAllUserInFamily" resultType="com.libi.entity.SysUser">
+        select * from sys_user where id in (
+          select user_id from family_mapping where family_id = #{familyId}
+        )
+    </select>
+
+    <select id="selectAllFamilyInUser" resultType="com.libi.entity.Family">
+        select * from family where id in (
+          select family_id from family_mapping where user_id = #{userId}
+        )
     </select>
 
 </mapper>
