@@ -5,6 +5,7 @@ package com.libi.commons;
  */
 public class ResponseTemplate<T> {
     private int code;
+    private String message;
     private T data;
 
     public int getCode() {
@@ -13,6 +14,14 @@ public class ResponseTemplate<T> {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {

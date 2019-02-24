@@ -33,6 +33,7 @@ public class LoginController {
     public ResponseTemplate<SysUser> loginSuccess() {
         ResponseTemplate<SysUser> response = new ResponseTemplate<SysUser>();
         response.setCode(0);
+        response.setMessage("成功");
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         SysUser user = userService.userLogin(userDetails.getUsername());
         user.setPassword("嘿嘿，不告诉你");
@@ -45,7 +46,7 @@ public class LoginController {
     public ResponseTemplate<String> loginFail() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(LOGIN_FAIL_ERROR);
-        response.setData("登录的账号或密码有误");
+        response.setMessage("登录的账号或密码有误");
         return response;
     }
 

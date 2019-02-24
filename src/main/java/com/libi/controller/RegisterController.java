@@ -30,10 +30,10 @@ public class RegisterController {
             newUser.setAuthority(ROLE_USER);
         }
         if (userService.userRegister(newUser)) {
-            response.setData("注册成功");
+            response.setMessage("注册成功");
         } else {
             response.setCode(PARAMETER_ERROR);
-            response.setData("注册失败，可能是用户名或手机号重复");
+            response.setMessage("注册失败，可能是用户名或手机号重复");
         }
         return response;
     }

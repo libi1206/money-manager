@@ -19,7 +19,7 @@ public class LogoutController {
     @ResponseBody
     public ResponseTemplate logoutSuccess() {
         ResponseTemplate<String> responseTemplate = new ResponseTemplate<String>();
-        responseTemplate.setData("登出成功");
+        responseTemplate.setMessage("登出成功");
         return responseTemplate;
     }
 
@@ -28,7 +28,7 @@ public class LogoutController {
     public ResponseTemplate logoutFail() {
         ResponseTemplate<String> responseTemplate = new ResponseTemplate<String>();
         responseTemplate.setCode(UNKNOWN_ERROR);
-        responseTemplate.setData("登出失败");
+        responseTemplate.setMessage("登出失败");
         return responseTemplate;
     }
 }

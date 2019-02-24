@@ -34,8 +34,10 @@ public class AssetsController extends BaseController {
     public ResponseTemplate<Assets> createAssets(Assets assets) {
         SysUser user = getLoginUser();
         assets.setOwner(user.getId());
+        assets.setCreateTime(System.currentTimeMillis());
         assetsService.createNewAssets(assets);
         ResponseTemplate<Assets> responseTemplate = new ResponseTemplate<Assets>();
+        responseTemplate.setMessage("创建成功");
         responseTemplate.setData(assets);
         return responseTemplate;
     }
@@ -46,6 +48,7 @@ public class AssetsController extends BaseController {
         SysUser user = getLoginUser();
         List<Assets> assetsList = assetsService.getUserAllAssets(user.getId());
         ResponseTemplate<List<Assets>> responseTemplate = new ResponseTemplate<List<Assets>>();
+        responseTemplate.setMessage("获取成功");
         responseTemplate.setData(assetsList);
         return responseTemplate;
     }
@@ -53,14 +56,14 @@ public class AssetsController extends BaseController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public ResponseTemplate updateAssets(HttpServletRequest request) {
-        ResponseTemplate responseTemplate = new ResponseTemplate();
+        ResponseTemplate<Assets> responseTemplate = new ResponseTemplate<Assets>();
         Long assetsId = null;
         try {
             assetsId = Long.parseLong(request.getParameter("assetsId"));
         } catch (Exception e) {
             e.printStackTrace();
             responseTemplate.setCode(PARAMETER_ERROR);
-            responseTemplate.setData("找不到assetsId参数或参数有误");
+            responseTemplate.setMessage("找不到assetsId参数或参数有误");
             return responseTemplate;
         }
         String assetsName = request.getParameter("assetsName");
@@ -71,7 +74,7 @@ public class AssetsController extends BaseController {
         } catch (NullPointerException e) {
             e.printStackTrace();
             responseTemplate.setCode(PARAMETER_ERROR);
-            responseTemplate.setData("AssetsID有误");
+            responseTemplate.setMessage("AssetsID有误");
         }
 
         if (changeOneWay != null) {
@@ -79,6 +82,7 @@ public class AssetsController extends BaseController {
         }
         Assets assets = assetsService.selectById(assetsId);
         responseTemplate.setData(assets);
+        responseTemplate.setMessage("更新成功");
         return responseTemplate;
     }
 

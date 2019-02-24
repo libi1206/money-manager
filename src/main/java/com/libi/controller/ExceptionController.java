@@ -24,7 +24,7 @@ public class ExceptionController{
     public ResponseTemplate<String> handle400() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(PARAMETER_ERROR);
-        response.setData("请求参数有误或者无法被服务器理解");
+        response.setMessage("请求参数有误或者无法被服务器理解");
         return response;
     }
 
@@ -37,7 +37,7 @@ public class ExceptionController{
     public ResponseTemplate<String> handle403() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(FORBIDDEN_ERROR);
-        response.setData("请求被拒绝,可能是权限不够");
+        response.setMessage("请求被拒绝,可能是权限不够");
         return response;
     }
 
@@ -46,7 +46,7 @@ public class ExceptionController{
     public ResponseTemplate<String> handle404() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(NOT_FIND_ERROR);
-        response.setData("找不到对应的响应，可能是请求的url有误");
+        response.setMessage("找不到对应的响应，可能是请求的url有误");
         return response;
     }
 
@@ -55,7 +55,7 @@ public class ExceptionController{
     public ResponseTemplate<String> handle405() {
         ResponseTemplate<String> responseTemplate = new ResponseTemplate<String>();
         responseTemplate.setCode(PARAMETER_ERROR);
-        responseTemplate.setData("该请求方法不允许");
+        responseTemplate.setMessage("该请求方法不允许");
         return responseTemplate;
     }
     @RequestMapping("/500")
@@ -63,7 +63,7 @@ public class ExceptionController{
     public ResponseTemplate<String> handle500() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(SERVICE_ERROR);
-        response.setData("服务器内部出错");
+        response.setMessage("服务器内部出错");
         return response;
     }
 
@@ -72,7 +72,7 @@ public class ExceptionController{
     public ResponseTemplate<String> handleDefault() {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(UNKNOWN_ERROR);
-        response.setData("出现了意料之外的错误");
+        response.setMessage("出现了意料之外的错误");
         return response;
     }
 }
