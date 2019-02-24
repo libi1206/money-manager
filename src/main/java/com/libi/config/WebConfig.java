@@ -3,6 +3,8 @@ package com.libi.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -27,6 +29,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/web/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+
+    /**
+     * TODO 开启multiPart，未成功
+     * 详细见 https://blog.csdn.net/just4you/article/details/70233133
+     * @return
+     */
+    @Bean
+    public MultipartResolver multipartResolver() {
+        MultipartResolver multipartResolver = new StandardServletMultipartResolver();
+        return multipartResolver;
     }
 
     /**
