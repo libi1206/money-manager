@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
     SysUserMapper sysUserMapper;
     @Autowired
     PasswordEncoder passwordEncoder;
+
     @Override
     public boolean userRegister(SysUser user) {
         if (user.getPassword() == null || user.getUserName() == null) {
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
         //插入数据库
         try {
             return sysUserMapper.insert(user) == 1;
-        } catch (DuplicateKeyException e){
+        } catch (DuplicateKeyException e) {
             return false;
         }
     }
@@ -42,5 +43,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public SysUser selectByPhoneNumber(String phone) {
         return sysUserMapper.selectByPhone(phone);
+    }
+
+    @Override
+    public SysUser selectById(Long id) {
+        return sysUserMapper.select(id);
+    }
+
+    @Override
+    public boolean updateUserImage(String imageUrl, Long userId) {
+        SysUser user = sysUserMapper.select(userId);
+        user.setHeadImg(imageUrl);
+        return 1 == sysUserMapper.update(user);
     }
 }

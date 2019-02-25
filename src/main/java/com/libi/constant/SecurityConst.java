@@ -14,10 +14,10 @@ public class SecurityConst {
     public static final String LOGIN_FAIL_URL = "/user/login/fail";
     public static final String LOGOUT_URL = "/user/logout";
     public static final String LOGOUT_SUCCESS_URL = "/user/logout/success";
-    public static final String LOGOUT_FAIL_URL = "/user/logout/fail";
     public static final String REGISTER_URL = "/user/register";
-    public static final String REGISTER_SUCCESS_URL = "/user/register/success";
-    public static final String REGISTER_FAIL_URL = "/user/register/fail";
+    public static final String ASSETS_URL = "/assets";
+    public static final String FAMILY_URL = "/family";
+    public static final String EXCEPTION_URL = "/error";
 
     /**
      * 用户名和密码的参数名

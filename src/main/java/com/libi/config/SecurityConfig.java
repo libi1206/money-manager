@@ -46,7 +46,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 配置整个用户信息从哪里获得
      */
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //TODO 这里使用了内存记录用户的操作，记得修改为数据库操作
         auth.userDetailsService(userDetailService)
                 //密码加密
                 .passwordEncoder(passwordEncoder());
@@ -57,11 +56,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 安全配置的详细信息
      */
     protected void configure(HttpSecurity http) throws Exception {
-        http    //下面是详细的安全性调整，TODO 还没有完成
+        http    //下面是详细的安全性调整
                 .authorizeRequests()
                     //登录界面不限制，登出和查询用户界面需要登录才能访问
                     .antMatchers(LOGIN_URL).permitAll()
+                    .antMatchers(EXCEPTION_URL+"/**").permitAll()
                     .antMatchers(LOGOUT_URL,LOGIN_URL+"/**").authenticated()
+                    .antMatchers(ASSETS_URL+"/**").authenticated()
+                    .antMatchers(FAMILY_URL+"/**").authenticated()
+
                 //设置登陆请求的URL
                 .and().formLogin()
                 .loginProcessingUrl(LOGIN_URL)

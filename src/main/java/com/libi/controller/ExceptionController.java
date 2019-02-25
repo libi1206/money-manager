@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import static com.libi.constant.ErrorCodeConst.*;
+import static com.libi.constant.SecurityConst.*;
 
 /**
  * @author libi
  * 处理出错时的相应
  */
 @Controller
-@RequestMapping(value = "/error")
+@RequestMapping(value = EXCEPTION_URL)
 public class ExceptionController{
 
     /**

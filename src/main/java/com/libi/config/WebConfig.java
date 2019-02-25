@@ -32,7 +32,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * TODO 开启multiPart，未成功
+     * 开启multiPart
      * 详细见 https://blog.csdn.net/just4you/article/details/70233133
      * @return
      */

@@ -15,11 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static com.libi.constant.ErrorCodeConst.*;
+import static com.libi.constant.SecurityConst.*;
 /**
  * @author libi
  */
 @Controller
-@RequestMapping("/assets")
+@RequestMapping(ASSETS_URL)
 public class AssetsController extends BaseController {
     @Autowired
     private AssetsService assetsService;

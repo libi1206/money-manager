@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+import static com.libi.constant.SecurityConst.*;
+
 /**
  * @author libi
  */
 @Controller
-@RequestMapping("/family")
+@RequestMapping(FAMILY_URL)
 public class FamilyController extends BaseController {
     @Autowired
     private FamilyService familyService;

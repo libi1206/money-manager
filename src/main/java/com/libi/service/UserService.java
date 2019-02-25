@@ -29,5 +29,18 @@ public interface UserService {
      */
     SysUser selectByPhoneNumber(String phone);
 
+    /**
+     * 更具用户ID选择用户，用于查询
+     * @param id
+     * @return
+     */
+    SysUser selectById(Long id);
+
+    /**
+     * 更新用户的头像，并且把旧的头像删掉
+     * @param imageUrl
+     * @return
+     */
+    boolean updateUserImage(String imageUrl,Long userId);
 
 }
