@@ -68,7 +68,7 @@ public class HeadImgController extends BaseController {
                     userService.updateUserImage(HEAD_IMAGE_URL + trueFileName, getLoginUser().getId());
                 } else {
                     responseTemplate.setCode(PARAMETER_ERROR);
-                    System.out.println("不是我们想要的文件类型,请按要求重新上传");
+                    responseTemplate.setMessage("不是我们想要的文件类型,请按要求重新上传");
                     return responseTemplate;
                 }
             } else {

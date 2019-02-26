@@ -64,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(LOGOUT_URL,LOGIN_URL+"/**").authenticated()
                     .antMatchers(ASSETS_URL+"/**").authenticated()
                     .antMatchers(FAMILY_URL+"/**").authenticated()
+                    .antMatchers("/user/uploadHead").authenticated()
 
                 //设置登陆请求的URL
                 .and().formLogin()
@@ -84,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
                         httpServletResponse.setContentType("application/json;charset=utf-8");
                         PrintWriter out = httpServletResponse.getWriter();
-                        String sb = "{\"code\":10002,\"data\":\"未登录\"}";
+                        String sb = "{\"code\":10002,\"message\":\"未登录\",\"data\":null}";
                         out.write(sb);
                         out.flush();
                         out.close();
