@@ -56,4 +56,19 @@ public class UserServiceImpl implements UserService {
         user.setHeadImg(imageUrl);
         return 1 == sysUserMapper.update(user);
     }
+
+    @Override
+    public boolean updateUserInfo(Long id, Boolean sex, String neckName, String phone) {
+        SysUser user = sysUserMapper.select(id);
+        if (sex != null) {
+            user.setSex(sex);
+        }
+        if (neckName != null) {
+            user.setNeckName(neckName);
+        }
+        if (phone != null) {
+            user.setPhone(phone);
+        }
+        return sysUserMapper.update(user) == 1;
+    }
 }

@@ -43,4 +43,13 @@ public interface UserService {
      */
     boolean updateUserImage(String imageUrl,Long userId);
 
+    /**
+     * 更新用户信息
+     * @param id
+     * @param sex
+     * @param neckName
+     * @param phone
+     * @return
+     */
+    boolean updateUserInfo(Long id, Boolean sex, String neckName, String phone);
 }

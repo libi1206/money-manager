@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author libi
+ */
 @Controller
 @RequestMapping("/test")
 public class TestController {

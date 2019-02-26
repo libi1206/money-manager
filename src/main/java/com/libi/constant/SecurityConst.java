@@ -14,6 +14,7 @@ public class SecurityConst {
     public static final String LOGIN_FAIL_URL = "/user/login/fail";
     public static final String LOGOUT_URL = "/user/logout";
     public static final String LOGOUT_SUCCESS_URL = "/user/logout/success";
+    public static final String USER_URL = "/user";
     public static final String REGISTER_URL = "/user/register";
     public static final String ASSETS_URL = "/assets";
     public static final String FAMILY_URL = "/family";
