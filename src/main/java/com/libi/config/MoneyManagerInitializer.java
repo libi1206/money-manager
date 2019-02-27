@@ -1,9 +1,12 @@
 package com.libi.config;
 
+import org.apache.log4j.Logger;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletRegistration;
+import javax.servlet.*;
+
+import java.io.IOException;
 
 import static com.libi.constant.DataBaseConst.*;
 
@@ -11,6 +14,8 @@ import static com.libi.constant.DataBaseConst.*;
  * @author libi
  */
 public class MoneyManagerInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+    private Logger logger = Logger.getLogger(getClass());
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{RootConfig.class};

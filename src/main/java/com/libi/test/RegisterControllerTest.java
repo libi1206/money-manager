@@ -29,7 +29,7 @@ public class RegisterControllerTest {
         user.setUserName("libi1206");
         user.setPassword("123");
 
-        ResponseTemplate responseTemplate = registerController.register(user);
+        ResponseTemplate responseTemplate = registerController.register(user,null);
         System.out.println(responseTemplate.getData());
     }
 }

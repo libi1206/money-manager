@@ -28,7 +28,7 @@ public class FamilyController extends BaseController {
 
     @RequestMapping(value = "/create",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseTemplate createFamilyForUser(Family family) {
+    public ResponseTemplate createFamilyForUser(Family family,HttpServletRequest request) {
         family.setCreateTime(System.currentTimeMillis());
         familyService.createFamily(family, getLoginUser().getId());
         ResponseTemplate<Family> responseTemplate = new ResponseTemplate<Family>();
@@ -60,7 +60,7 @@ public class FamilyController extends BaseController {
 
     @RequestMapping(value = "/getAllFamily", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseTemplate selectAllFamilyInUser() {
+    public ResponseTemplate selectAllFamilyInUser(HttpServletRequest request) {
         ResponseTemplate<List<Family>> responseTemplate = new ResponseTemplate<List<Family>>();
         responseTemplate.setData(familyService.getAllFamilies(getLoginUser().getId()));
         responseTemplate.setMessage("查询成功");

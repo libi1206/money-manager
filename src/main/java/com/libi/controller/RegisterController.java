@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.libi.constant.SecurityConst.*;
 import static com.libi.constant.ErrorCodeConst.*;
 /**
@@ -23,7 +25,7 @@ public class RegisterController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public ResponseTemplate<String> register(SysUser newUser) {
+    public ResponseTemplate<String> register(SysUser newUser,HttpServletRequest request) {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         newUser.setCreateTime(System.currentTimeMillis());
         if (newUser.getAuthority() == null) {

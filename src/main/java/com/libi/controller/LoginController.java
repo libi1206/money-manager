@@ -30,7 +30,7 @@ public class LoginController {
 
     @RequestMapping(value = "/success")
     @ResponseBody
-    public ResponseTemplate<SysUser> loginSuccess() {
+    public ResponseTemplate<SysUser> loginSuccess(HttpServletRequest request) {
         ResponseTemplate<SysUser> response = new ResponseTemplate<SysUser>();
         response.setCode(0);
         response.setMessage("成功");
@@ -43,7 +43,7 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/fail")
     @ResponseBody
-    public ResponseTemplate<String> loginFail() {
+    public ResponseTemplate<String> loginFail(HttpServletRequest request) {
         ResponseTemplate<String> response = new ResponseTemplate<String>();
         response.setCode(LOGIN_FAIL_ERROR);
         response.setMessage("登录的账号或密码有误");
@@ -51,7 +51,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/me")
-    public String  getUserInfo() {
+    public String  getUserInfo(HttpServletRequest request) {
         return "redirect:"+LOGIN_SUCCESS_URL;
     }
 

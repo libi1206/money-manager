@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @ComponentScan(basePackages = "com.libi")
-@Import({DataBaseConfig.class})
+@Import({DataBaseConfig.class,AspectConfig.class})
 public class RootConfig {
 }

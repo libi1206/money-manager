@@ -32,7 +32,7 @@ public class AssetsController extends BaseController {
      */
     @RequestMapping(value = "/create",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseTemplate<Assets> createAssets(Assets assets) {
+    public ResponseTemplate<Assets> createAssets(Assets assets,HttpServletRequest request) {
         SysUser user = getLoginUser();
         assets.setOwner(user.getId());
         assets.setCreateTime(System.currentTimeMillis());
@@ -45,7 +45,7 @@ public class AssetsController extends BaseController {
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseTemplate getAllAssets() {
+    public ResponseTemplate getAllAssets(HttpServletRequest request) {
         SysUser user = getLoginUser();
         List<Assets> assetsList = assetsService.getUserAllAssets(user.getId());
         ResponseTemplate<List<Assets>> responseTemplate = new ResponseTemplate<List<Assets>>();

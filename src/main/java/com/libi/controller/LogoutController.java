@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static com.libi.constant.SecurityConst.*;
 import static com.libi.constant.ErrorCodeConst.*;
 
@@ -17,7 +19,7 @@ import static com.libi.constant.ErrorCodeConst.*;
 public class LogoutController {
     @RequestMapping(value = "/success")
     @ResponseBody
-    public ResponseTemplate logoutSuccess() {
+    public ResponseTemplate logoutSuccess(HttpServletRequest request) {
         ResponseTemplate<String> responseTemplate = new ResponseTemplate<String>();
         responseTemplate.setMessage("登出成功");
         return responseTemplate;
@@ -25,7 +27,7 @@ public class LogoutController {
 
     @RequestMapping(value = "/fail")
     @ResponseBody
-    public ResponseTemplate logoutFail() {
+    public ResponseTemplate logoutFail(HttpServletRequest request) {
         ResponseTemplate<String> responseTemplate = new ResponseTemplate<String>();
         responseTemplate.setCode(UNKNOWN_ERROR);
         responseTemplate.setMessage("登出失败");

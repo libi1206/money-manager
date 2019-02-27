@@ -31,11 +31,11 @@ public class UserController extends BaseController {
     @ResponseBody
     public ResponseTemplate updateUser(HttpServletRequest request) {
         Boolean sex = Boolean.parseBoolean(request.getParameter("sex"));
-        logger.debug(sex);
+        logger.warn(sex);
         String neckName = request.getParameter("neckName");
-        logger.debug(neckName);
+        logger.warn(neckName);
         String phone = request.getParameter("phone");
-        logger.debug(phone);
+        logger.warn(phone);
         userService.updateUserInfo(getLoginUser(), sex, neckName, phone);
         ResponseTemplate<SysUser> responseTemplate = new ResponseTemplate<SysUser>();
         responseTemplate.setMessage("更新成功");
