@@ -3,6 +3,7 @@ package com.libi.controller;
 import com.libi.base.BaseController;
 import com.libi.commons.ResponseTemplate;
 import com.libi.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class HeadImgController extends BaseController {
      * 头像文件保存的路径
      */
     private static final String HEAD_IMAGE_URL = "/headImage/";
+    private Logger logger = Logger.getLogger(getClass());
 
     @Autowired
     private UserService userService;
@@ -45,7 +47,7 @@ public class HeadImgController extends BaseController {
             String path;
             String type;
             String fileName = file.getOriginalFilename();
-            System.out.println("上传的文件原名称:" + fileName);
+            logger.info("上传的文件原名称:" + fileName);
             // 判断文件类型
             type = fileName.contains(".") ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
             if (type != null) {
@@ -56,14 +58,14 @@ public class HeadImgController extends BaseController {
                     String trueFileName = String.valueOf(System.currentTimeMillis()) + "," +getLoginUser().getUserName()+ "." +type;
                     // 设置存放图片文件的路径
                     path = realPath + trueFileName;
-                    System.out.println("存放图片文件的路径:" + path);
+                    logger.info("存放图片文件的路径:" + path);
                     // 转存文件到指定的路径
                     File savedFile = new File(path);
                     if (!savedFile.getParentFile().exists()) {
                         savedFile.getParentFile().mkdirs();
                     }
                     file.transferTo(new File(path));
-                    System.out.println("文件成功上传到指定目录下");
+                    logger.info("文件成功上传到指定目录下");
                     //保存到数据库中
                     userService.updateUserImage(HEAD_IMAGE_URL + trueFileName, getLoginUser().getId());
                 } else {
