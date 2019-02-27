@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class LogController {
-    @RequestMapping()
+    /**
+     * TODO 这种方式会使得头像无法获取
+     * @param request
+     * @return
+     */
+    //@RequestMapping()
     public String forLog(HttpServletRequest request) {
         return "forward:/error/404";
     }
