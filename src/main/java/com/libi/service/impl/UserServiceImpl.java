@@ -58,8 +58,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean updateUserInfo(Long id, Boolean sex, String neckName, String phone) {
-        SysUser user = sysUserMapper.select(id);
+    public boolean updateUserInfo(SysUser user, Boolean sex, String neckName, String phone) {
         if (sex != null) {
             user.setSex(sex);
         }

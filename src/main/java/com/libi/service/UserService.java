@@ -45,11 +45,11 @@ public interface UserService {
 
     /**
      * 更新用户信息
-     * @param id
+     * @param user
      * @param sex
      * @param neckName
      * @param phone
      * @return
      */
-    boolean updateUserInfo(Long id, Boolean sex, String neckName, String phone);
+    boolean updateUserInfo(SysUser user, Boolean sex, String neckName, String phone);
 }
