@@ -22,15 +22,15 @@ import static com.libi.constant.SecurityConst.*;
  */
 @Service("UserDetailService")
 public class UserDetailServiceImpl implements UserDetailsService {
-    private static final String PHONE_PREFIX = "tel_";
+    private static final String PHONE_REGEX = "^((17[0-9])|(14[0-9])|(13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
     @Autowired
     SysUserMapper sysUserMapper;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         SysUser sysUser = null;
-        if (userName.startsWith(PHONE_PREFIX)) {
-            sysUser = sysUserMapper.selectByPhone(userName.substring(4));
+        if (userName.matches(PHONE_REGEX)) {
+            sysUser = sysUserMapper.selectByPhone(userName);
         } else {
             sysUser = sysUserMapper.selectByUsername(userName);
         }

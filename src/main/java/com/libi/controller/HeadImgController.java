@@ -29,6 +29,7 @@ public class HeadImgController extends BaseController {
     private static final String GIF = "GIF";
     private static final String PNG = "PNG";
     private static final String JPG = "JPG";
+    private static final String JPEG = "JPEG";
 
     /**
      * 头像文件保存的路径
@@ -47,12 +48,14 @@ public class HeadImgController extends BaseController {
             String path;
             String type;
             String fileName = file.getOriginalFilename();
+            String fileType = file.getContentType();
             logger.info("上传的文件原名称:" + fileName);
+            logger.info("文件的content-type："+fileType);
             // 判断文件类型
-            type = fileName.contains(".") ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
+            type = fileName.contains("/") ? fileName.substring(fileName.lastIndexOf("/") + 1, fileName.length()) : null;
             logger.info("文件类型"+type);
             if (type != null) {
-                if (GIF.equals(type.toUpperCase()) || PNG.equals(type.toUpperCase()) || JPG.equals(type.toUpperCase())) {
+                if (GIF.equals(type.toUpperCase()) || PNG.equals(type.toUpperCase()) || JPG.equals(type.toUpperCase()) || JPEG.equals(type.toUpperCase())) {
                     // 项目在容器中实际发布运行的根路径
                     String realPath = request.getSession().getServletContext().getRealPath(HEAD_IMAGE_URL);
                     // 自定义的文件名称
