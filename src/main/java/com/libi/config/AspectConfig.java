@@ -32,14 +32,14 @@ class Advice{
     private Logger logger = Logger.getLogger(this.getClass());
 
     @Pointcut("execution(* com.libi.controller.*.*(..))" +
-            "&& args(request)")
+            "&& args(..,request)")
     public void controller(HttpServletRequest request) {
 
     }
 
     @Before("controller(request)")
     public void printIpAndUri(HttpServletRequest request) {
-        logger.info("SessionID:"+request.getSession().getId()+" 访问URI:"+request.getRequestURI());
+        logger.info(request.getMethod()+"访问URI:"+request.getRequestURI()+" SessionID:"+request.getSession().getId());
     }
 
 }

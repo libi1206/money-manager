@@ -41,7 +41,7 @@ public class HeadImgController extends BaseController {
 
     @RequestMapping(value = "/uploadHead",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseTemplate uploadHeadImage(HttpServletRequest request, MultipartFile file) throws IOException {
+    public ResponseTemplate uploadHeadImage(MultipartFile file,HttpServletRequest request) throws IOException {
         ResponseTemplate responseTemplate = new ResponseTemplate();
         if (file != null) {
             String path;
@@ -50,6 +50,7 @@ public class HeadImgController extends BaseController {
             logger.info("上传的文件原名称:" + fileName);
             // 判断文件类型
             type = fileName.contains(".") ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
+            logger.info("文件类型"+type);
             if (type != null) {
                 if (GIF.equals(type.toUpperCase()) || PNG.equals(type.toUpperCase()) || JPG.equals(type.toUpperCase())) {
                     // 项目在容器中实际发布运行的根路径
@@ -76,12 +77,12 @@ public class HeadImgController extends BaseController {
             } else {
                 responseTemplate.setCode(PARAMETER_ERROR);
                 responseTemplate.setMessage("文件类型为空");
-                return null;
+                return responseTemplate;
             }
         } else {
             responseTemplate.setCode(PARAMETER_ERROR);
             responseTemplate.setMessage("没有找到相对应的文件");
-            return null;
+            return responseTemplate;
         }
         responseTemplate.setMessage("上传成功");
         return responseTemplate;
