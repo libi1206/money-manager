@@ -1,6 +1,7 @@
 package com.libi.config;
 
 import com.libi.service.impl.UserDetailServiceImpl;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +31,8 @@ import static com.libi.constant.SecurityConst.*;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    UserDetailServiceImpl userDetailService;
+    private UserDetailServiceImpl userDetailService;
+    private Logger logger = Logger.getLogger(getClass());
 
     /**
      * 密码编码
@@ -55,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 安全配置的详细信息
      */
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception {
         http    //下面是详细的安全性调整
                 .authorizeRequests()
                     //登录界面不限制，登出和查询用户界面需要登录才能访问
@@ -83,6 +85,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().exceptionHandling().authenticationEntryPoint(new AuthenticationEntryPoint() {
                     @Override
                     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+                        if (httpServletRequest.getCookies().length > 0) {
+                            logger.info("未登录的cookie:" + httpServletRequest.getCookies()[0].getName()+":"+httpServletRequest.getCookies()[0].getValue());
+                        }
+                        logger.info("未登录访问的URI："+httpServletRequest.getRequestURI()+" 方法："+httpServletRequest.getMethod());
                         httpServletResponse.setContentType("application/json;charset=utf-8");
                         PrintWriter out = httpServletResponse.getWriter();
                         String sb = "{\"code\":10002,\"message\":\"未登录\",\"data\":null}";

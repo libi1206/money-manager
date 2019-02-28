@@ -9,7 +9,7 @@ import com.libi.base.BaseEntity;
 public class SysUser extends BaseEntity {
     private String userName;
     private String password;
-    private boolean sex;
+    private Boolean sex;
     private String authority;
     private String neckName;
     private String headImg;

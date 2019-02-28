@@ -4,6 +4,7 @@ import com.libi.commons.ResponseTemplate;
 import com.libi.dao.SysUserMapper;
 import com.libi.entity.SysUser;
 import com.libi.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,6 +27,7 @@ import static com.libi.constant.ErrorCodeConst.*;
 public class LoginController {
     @Autowired
     private UserService userService;
+    private Logger logger = Logger.getLogger(getClass());
 
 
     @RequestMapping(value = "/success")
@@ -51,22 +53,23 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/me")
-    public String  getUserInfo(HttpServletRequest request) {
-        return "redirect:"+LOGIN_SUCCESS_URL;
+    public String getUserInfo(HttpServletRequest request) {
+        return "forward:" + LOGIN_SUCCESS_URL;
     }
 
     /**
      * TODO 请求转发给LoginURL无法正常判断
+     *
      * @param request
      * @return
      */
-    @RequestMapping(value = "/phone",method = RequestMethod.POST)
+    @RequestMapping(value = "/phone", method = RequestMethod.POST)
     public String loginForPhone(HttpServletRequest request) {
         String phoneNumber = request.getParameter("phone");
         System.out.println(phoneNumber);
         SysUser user = userService.selectByPhoneNumber(phoneNumber);
-        request.setAttribute("username",user.getUserName());
-        return "forward:"+LOGIN_URL;
+        request.setAttribute("username", user.getUserName());
+        return "forward:" + LOGIN_URL;
     }
 
 
