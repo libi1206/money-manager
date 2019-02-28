@@ -85,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().exceptionHandling().authenticationEntryPoint(new AuthenticationEntryPoint() {
                     @Override
                     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-                        if (httpServletRequest.getCookies().length > 0) {
+                        if (httpServletRequest.getCookies()!=null && httpServletRequest.getCookies().length > 0) {
                             logger.info("未登录的cookie:" + httpServletRequest.getCookies()[0].getName()+":"+httpServletRequest.getCookies()[0].getValue());
                         }
                         logger.info("未登录访问的URI："+httpServletRequest.getRequestURI()+" 方法："+httpServletRequest.getMethod());

@@ -59,7 +59,7 @@ public class HeadImgController extends BaseController {
                     // 项目在容器中实际发布运行的根路径
                     String realPath = request.getSession().getServletContext().getRealPath(HEAD_IMAGE_URL);
                     // 自定义的文件名称
-                    String trueFileName = String.valueOf(System.currentTimeMillis()) + "," +getLoginUser().getUserName()+ "." +type;
+                    String trueFileName = String.valueOf(System.currentTimeMillis()) + "_" +getLoginUser().getUserName()+ "." +type;
                     // 设置存放图片文件的路径
                     path = realPath + trueFileName;
                     logger.info("存放图片文件的路径:" + path);
