@@ -2,9 +2,12 @@ package com.libi.config;
 
 import org.apache.log4j.Logger;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
+import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
@@ -41,5 +44,16 @@ public class MoneyManagerInitializer extends AbstractAnnotationConfigDispatcherS
         registration.setMultipartConfig(
                 new MultipartConfigElement(FILE_LOCATION,MAX_FILE_SIZE,MAX_REQUEST_SIZE,FILE_SIZE_THRESHOLD)
         );
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new OncePerRequestFilter() {
+            @Override
+            protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+                logger.info(request.getMethod()+"访问URI:"+request.getRequestURI()+" SessionID:"+request.getSession().getId());
+                filterChain.doFilter(request,response);
+            }
+        }};
     }
 }

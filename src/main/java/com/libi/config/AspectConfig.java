@@ -39,7 +39,8 @@ class Advice{
 
     @Before("controller(request)")
     public void printIpAndUri(HttpServletRequest request) {
-        logger.info(request.getMethod()+"访问URI:"+request.getRequestURI()+" SessionID:"+request.getSession().getId());
+//        logger.info(request.getMethod()+"访问URI:"+request.getRequestURI()+" SessionID:"+request.getSession().getId());
+        logger.info("命中Controller方法："+request.getRequestURI());
     }
 
 }

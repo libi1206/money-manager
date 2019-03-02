@@ -31,11 +31,11 @@ public class SysUser extends BaseEntity {
         this.password = password;
     }
 
-    public boolean isSex() {
+    public Boolean isSex() {
         return sex;
     }
 
-    public void setSex(boolean sex) {
+    public void setSex(Boolean sex) {
         this.sex = sex;
     }
 
