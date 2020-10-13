@@ -25,7 +25,7 @@
         <project.bulid.sourceEncodeing>UTF-8</project.bulid.sourceEncodeing>
         <org.springframework.version>4.3.20.RELEASE</org.springframework.version>
         <org.springframework.security>4.2.9.RELEASE</org.springframework.security>
-        <junit>RELEASE</junit>
+        <junit>4.13.1</junit>
         <org.aspectJ.version>1.7.3</org.aspectJ.version>
         <javax.jsp.jspl>1.2</javax.jsp.jspl>
         <javax.servlet>3.0.1</javax.servlet>
